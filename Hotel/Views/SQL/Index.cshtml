@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>SQL</h2>
+@Html.ActionLink("SQL", "Index", "SQL", "", new { @class = "btn btn-info mr-2", @style = "margin-right:20px;" })
+@Html.ActionLink("Admin menu", "Index", "Admin", "", new { @class = "btn btn-info" })
+
+<form action="/SQL/SQL" method="post" style="margin-top: 20px;">
+    <textarea id="names" name="query" type="text" value="" class="col-6"> </textarea>
+    <br />
+    <div class="row" style="margin-left: 0px;">
+        <button class="btn btn-success mr-2" style="width: 100px;">Запрос!</button>
+    </div>
+</form>

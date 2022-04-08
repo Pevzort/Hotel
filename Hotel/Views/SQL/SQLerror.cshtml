@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "SQLerror";
+}
+
+<h2>SQLerror</h2>
+@Html.ActionLink("SQL", "Index", "SQL", "", new { @class = "btn btn-info mr-2", @style = "margin-right:20px;" })
+@Html.ActionLink("Admin menu", "Index", "Admin", "", new { @class = "btn btn-info" })
+
+<h2 style="color: red; margin-top:20px;">@ViewBag.SQLerror</h2>

@@ -1,0 +1,42 @@
+﻿@model Hotel.Models.ViewModel.LoginVM
+@{
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger", @style = "color:red" })
+        <div class="form-group">
+            <p>Nickname</p>
+            <div>
+                @Html.EditorFor(model => model.Nickname, new { htmlAttributes = new { @class = "form-control", @style = "width: 180px;" } })
+                @Html.ValidationMessageFor(model => model.Nickname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p>Password</p>
+            <div>
+                @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row" style="margin-left:2px">
+            <div class="form-group">
+                <div>
+                    <input type="submit" value="Login" class="btn btn-warning" />
+                </div>
+            </div>
+
+            <div>
+                @Html.ActionLink("Register", "Register", "", new { @class = "btn btn-info", @style = "margin-left:15px" })
+            </div>
+        </div>
+
+    </div>
+}

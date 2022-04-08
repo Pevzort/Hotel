@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Hotel.Models.ViewModel.RoomsVM>
+
+@{
+    ViewBag.Title = "RoomsList";
+}
+
+
+
+<body>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+        <div class="col-xs-12 col-md-4 section-container-spacer" style="border: 1px solid black; margin: 5px; padding: 10px; max-width: fit-content">
+            <h5 class="card-title">Room №@item.Id</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@item.Service</h6>
+            <p class="card-text">@item.Bed</p>
+            <p class="card-text" style="color: chocolate">Max people: @item.Capacity</p>
+            <p class="card-text" style="color: green">$ @item.Price</p>
+            @Html.ActionLink("Book a room", "CreateOrder", new { id = item.Id })
+        </div>
+        }
+    </div>
+</body>

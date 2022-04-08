@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (Session["Nickname"] != null)
+{
+    <h1>Hello, @Session["Nickname"].ToString()</h1>
+}
+<h2>This is Admin place!</h2>
+<div style="padding:20px;">
+    @Html.ActionLink("Beds", "Index", "Beds", "", new { @class = "btn btn-info mr-2", @style = "margin-bottom:20px; margin-top:25px;" }) <br />
+    @Html.ActionLink("Rooms", "Index", "Rooms", "", new { @class = "btn btn-info mr-2", @style = "margin-bottom:20px;" }) <br />
+    @Html.ActionLink("Orders", "Index", "Orders", "", new { @class = "btn btn-info mr-2", @style = "margin-bottom:20px;" }) <br />
+    @Html.ActionLink("Services", "Index", "Services", "", new { @class = "btn btn-info mr-2", @style = "margin-bottom:20px;" }) <br />
+    @Html.ActionLink("Users", "Index", "Users", "", new { @class = "btn btn-info mr-2", @style = "margin-bottom:20px;" }) <br />
+    @Html.ActionLink("SQL", "Index", "SQL", "", new { @class = "btn btn-info mr-2", @style = "margin-bottom:20px;" })
+</div>

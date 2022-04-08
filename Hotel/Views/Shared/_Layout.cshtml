@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title>Roberto - Hotel &amp; Resort HTML Template</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="~/Content/img/core-img/favicon.png">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="~/Content/style.css">
+</head>
+<body>
+    <header class="header-area">
+
+        <!-- Top Header Area Start -->
+        <div class="top-header-area">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-6">
+                        <div class="top-header-content">
+                            <a href="#"><i class="icon_phone"></i> <span>+7(919)175-18-50</span></a>
+                            <a href="#"><i class="icon_mail"></i> <span>maslov.mr@yandex.ru</span></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Top Header Area End -->
+        <!-- Main Header Start -->
+        <div class="main-header-area">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Classy Menu -->
+                    <nav class="classy-navbar justify-content-between" id="robertoNav">
+
+                        <!-- Logo -->
+                        <a class="nav-brand" href="/Home/Index"><img src="~/Content/img/core-img/logo.png" alt=""></a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+                            <!-- Menu Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+                            <!-- Nav Start -->
+                            <div class="classynav">
+                                <ul id="nav">
+                                    <li class="active"><a href="/Home/Index">Home</a></li>
+                                    @if (Session["UserId"] != null)
+                                    {
+                                        <li>
+                                            <a href="/UserOrder/Index">My Orders</a>
+                                        </li>
+
+                                        if (Session["Role"].ToString() == "Admin")
+                                        {
+                                            <li>
+                                                @Html.ActionLink($"Hello, {Session["Nickname"]}", "Index", "Admin", "", new { @style = "color:orange" })
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li>
+                                                <p>
+                                                    Hello, @Session["Nickname"].ToString()
+                                                </p>
+                                            </li>
+                                        }
+
+                                        <li>
+                                            @Html.ActionLink("Logout", "Logout", "Account", "", new { @style = "color:red" })
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            @Html.ActionLink("Sign in", "Login", "Account", "", new { @style = "color:green" })
+                                        </li>
+                                    }
+                                </ul>
+                                <!-- Book Now -->
+                                @if (Session["UserId"] != null)
+                                {
+                                    <div class="book-now-btn ml-3 ml-lg-5">
+                                        <a href="/UserOrder/RoomsList">Book Now <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                                    </div>
+                                }
+                            </div>
+                            <!-- Nav End -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header Area End -->
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <!-- Footer Area Start -->
+        <footer class="footer-area section-padding-80-0">
+            <!-- Main Footer Area -->
+            <div class="main-footer-area">
+                <div class="container">
+                    <div class="row align-items-baseline justify-content-between">
+                        <!-- Single Footer Widget Area -->
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="single-footer-widget mb-80">
+                                <!-- Footer Logo -->
+                                <a href="/Home/Index" class="footer-logo"><img src="~/Content/img/core-img/logo2.png" alt=""></a>
+
+                                <h4>+7(919)175-18-50</h4>
+                                <span>maslov.mr@yandex.ru</span>
+                                <span>111/1 Prospekt Stachek, Saint-Petersburg, Russia</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copywrite Area -->
+            <div class="container">
+                <div class="copywrite-content">
+                    <div class="row align-items-center">
+                        <div class="col-12 col-md-8">
+                            <!-- Copywrite Text -->
+                            <div class="copywrite-text">
+                                <p>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Copyright &copy;
+                                    <script>document.write(new Date().getFullYear());</script> All rights reserved
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer Area End -->
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

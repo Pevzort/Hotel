@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "SQL";
+}
+
+<h2>SQL</h2>
+@Html.ActionLink("SQL", "Index", "SQL", "", new { @class = "btn btn-info mr-2", @style = "margin-right:20px;" })
+@Html.ActionLink("Admin menu", "Index", "Admin", "", new { @class = "btn btn-info" })
+@model IEnumerable<object[]>
+<table style="margin-top: 20px;">
+    <tbody>
+        @if (Model.Any())
+        {
+            <h3>Result</h3>
+        }
+        @foreach (var row in Model)
+        {
+            <tr>
+                @foreach (var column in row)
+                {
+                    <td>@column &nbsp;</td>
+                    <td></td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
